@@ -1,2 +1,5 @@
-# precip-encoder-decoders
-TensorFlow encoder-decoder models for forecasting rain using ERA-Interim data.
+# A data-driven approach to precipitation parameterizations using convolutional encoder-decoder neural networks
+
+Keras TensorFlow implementation of the models presented in the paper:
+
+https://arxiv.org/abs/1903.10274
