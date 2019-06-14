@@ -76,14 +76,14 @@ def get_unet():
     sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
     model.compile(loss='mae', optimizer=sgd, metrics=['mse'])
     #model.compile(loss='mae', optimizer=Adam(lr=0.001), metrics=['mse'])
-    print model.summary()
+    print(model.summary())
 
     return model
 
 
 #x = np.load("/datasets/1980-2016/z_1980_2016.npy")
-x = np.load("/datasets/10zlevels.npy")
-y = 1000*np.expand_dims(np.load("/datasets/1980-2016/full_tp_1980_2016.npy"), axis=3)
+x = np.load("/home/lar116/project/ERA-interim/10zlevels.npy")
+y = 1000*np.expand_dims(np.load("/home/lar116/project/ERA-interim/full_tp_1980_2016.npy"), axis=3)
 
 idxs = np.arange(x.shape[0])
 np.random.seed(0)
@@ -108,4 +108,4 @@ history = model.fit(x_train, y_train, epochs=50, verbose=1, validation_data=(x_t
 with open('trainHistoryDict_unet1_{}-{}-{}'.format(i, j, k), 'wb') as file_pi:
     pickle.dump(history.history, file_pi)
 
-model.save('/datasets/unet1_{}-{}-{}_.h5')
+model.save('unet1_{}-{}-{}_.h5')
